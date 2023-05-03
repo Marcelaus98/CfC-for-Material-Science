@@ -367,12 +367,23 @@ This type of RNN has two different internal states:
 + **Memory** (c)
 
 Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input data. \
-This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present./
+This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
 A downside of this architecture is that having more variables is harder to train, for this some times is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed.
 
 <img src="images/LSTM.JPG" width=1000 height=500>
 
-![CfC](images/CfC.JPG)
+After the [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer is present a [CfC](https://www.nature.com/articles/s42256-022-00556-7) block. This particular structure is shown below, but it can be imagined as a RNN with time handling. 
+
+<img src="images/CfC.JPG" width=1000 height=500>
+
+The CfCs used in this work are a particular approximation of the Liquid Time Constant ([LTC](https://arxiv.org/abs/2006.04439)), essentially they allow a better continuous transition between hidden states using time data.\
+Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
+This isn't a problem in most datasets, because entries are equally spaced between each other, but in case of some unevennes in the data, the accuracy of the predictions quickly deteriorates. \
+Some attemps have been made using a [RNN with a time depending decay](https://www.nature.com/articles/s41598-018-24271-9), but generally the issue wasn't solved.\
+A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states.\
+However the price to pay in this kind of networks is the increased complexity and a generally longer runtime and this significantly reduced their applications.\
+CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are generally capable of a better overall convergence and accuracy even in an equally spaced scenario when compared with LSTM and GRU.
+
 ![NCP](images/NCP.JPG)
 ![Attn](images/MHAttn.JPG)
 
