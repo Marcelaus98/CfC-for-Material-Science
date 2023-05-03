@@ -16,14 +16,75 @@ with the same structure that output simultaniously **Mean** and **Variance**.
 
 ## Index
 
++ [Graphical Representation of the Network](#Graphical-Representation-of-the-Network)
 + [Installation](#Installation)
 + [Usage](#Usage)
 + [Implementation of a Custom Dataset](#Implementation-of-a-Custom-Dataset)
 + [Hyperparameters Tuning and Meaning](#Hyperparameters-Tuning-and-Meaning)
 + [Visualizing Results](#Visualizing-Results)
-+ [Graphical Representation of the Network](#Graphical-Representation-of-the-Network)
 + [Contributing](#Contributing)
 + [License](#License)
+
+
+## Graphical Representation of the Network
+
+The Main Structure of the Network is shown below.
+
+Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach and Variational Auto-Encoder approach respectively
+
+<img src="images/AE.JPG" width=500 height=350> <img src="images/VAE.JPG" width=500 height=350>
+
+Focusing the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
+Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.\
+In this study each block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
+
+<img src="images/Encoder_text.JPG" width=1000 height=500>
+
+As for the Encoder section, the first structure the data encounters is a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a more complex version of a standard [Recurrent Neural Network](https://www.simplilearn.com/tutorials/deep-learning-tutorial/rnn)\
+This type of RNN has two different internal states:
+
++ **Hidden** (h)
++ **Memory** (c)
+
+Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input data. \
+This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
+A downside of this architecture is that having more variables is harder to train, for this some times is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed.
+
+<img src="images/LSTM.JPG" width=1000 height=500>
+
+After the [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer is present a [CfC](https://www.nature.com/articles/s42256-022-00556-7) block. This particular structure is shown below, but it can be imagined as a RNN with time handling. 
+
+<img src="images/CfC.JPG" width=1000 height=500>
+
+The CfCs used in this work are a particular approximation of the Liquid Time Constant ([LTC](https://arxiv.org/abs/2006.04439)), essentially they allow a better continuous transition between hidden states using time data.\
+Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
+This isn't a problem in most datasets, because entries are equally spaced between each other, but in case of some unevennes in the data, the accuracy of the predictions quickly deteriorates. \
+Some attemps have been made using a [RNN with a time depending decay](https://www.nature.com/articles/s41598-018-24271-9), but generally the issue wasn't solved.\
+A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states. The price to pay in this was the increased complexity and a generally longer runtime and this significantly reduced their applications.\
+CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are generally capable of a better overall convergence and accuracy even in an equally spaced scenario when compared with LSTM and GRU.
+
+The CfC Networks in this study have been wired not using a Fully-Connected Approach, but using the [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy to ensure sparsness and faster computation.\
+A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but fewer parameters to optimize, allowed the network to efficiently learn complex structures in the dataset.\
+In the image below is shown the discussed wiring between CfC layers
+
+<img src="images/NCP.JPG" width=1000 height=300>
+
+<img align="left" src="images/MHAttn.JPG" width=250 height=200> 
+To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
+Even if simple this structure significantly improved the accuracy of the network.
+
+
+
+
+
+
+
+Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output **Mean** and **Variance** of the Prediction.
+
+
+A complete image of the Network is showed below
+
+<img src="images/Full.JPG">
 
 
 ## Installation
@@ -345,67 +406,6 @@ $ python run.py --cuda --var -dataset AISI
 ```
 
 I will find my results inside **results/aisi/var/2023_05_02_15_30/**
-
-## Graphical Representation of the Network
-
-The Main Structure of the Network is shown below.
-
-Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach and Variational Auto-Encoder approach respectively
-
-<img src="images/AE.JPG" width=500 height=350> <img src="images/VAE.JPG" width=500 height=350>
-
-Focusing the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
-Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.\
-In this study each block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
-
-<img src="images/Encoder_text.JPG" width=1000 height=500>
-
-As for the Encoder section, the first structure the data encounters is a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a more complex version of a standard [Recurrent Neural Network](https://www.simplilearn.com/tutorials/deep-learning-tutorial/rnn)\
-This type of RNN has two different internal states:
-
-+ **Hidden** (h)
-+ **Memory** (c)
-
-Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input data. \
-This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
-A downside of this architecture is that having more variables is harder to train, for this some times is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed.
-
-<img src="images/LSTM.JPG" width=1000 height=500>
-
-After the [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer is present a [CfC](https://www.nature.com/articles/s42256-022-00556-7) block. This particular structure is shown below, but it can be imagined as a RNN with time handling. 
-
-<img src="images/CfC.JPG" width=1000 height=500>
-
-The CfCs used in this work are a particular approximation of the Liquid Time Constant ([LTC](https://arxiv.org/abs/2006.04439)), essentially they allow a better continuous transition between hidden states using time data.\
-Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
-This isn't a problem in most datasets, because entries are equally spaced between each other, but in case of some unevennes in the data, the accuracy of the predictions quickly deteriorates. \
-Some attemps have been made using a [RNN with a time depending decay](https://www.nature.com/articles/s41598-018-24271-9), but generally the issue wasn't solved.\
-A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states. The price to pay in this was the increased complexity and a generally longer runtime and this significantly reduced their applications.\
-CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are generally capable of a better overall convergence and accuracy even in an equally spaced scenario when compared with LSTM and GRU.
-
-The CfC Networks in this study have been wired not using a Fully-Connected Approach, but using the [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy to ensure sparsness and faster computation.\
-A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but fewer parameters to optimize, allowed the network to efficiently learn complex structures in the dataset.\
-In the image below is shown the discussed wiring between CfC layers
-
-<img src="images/NCP.JPG" width=1000 height=300>
-
-<img align="left" src="images/MHAttn.JPG" width=250 height=200> 
-To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
-Even if simple this structure significantly improved the accuracy of the network.
-
-
-
-
-
-
-
-Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output **Mean** and **Variance** of the Prediction.
-
-
-A complete image of the Network is showed below
-
-<img src="images/Full.JPG">
-
 
 ## Contributing
 
