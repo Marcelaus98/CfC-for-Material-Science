@@ -387,12 +387,12 @@ The CfC Networks in this study have been wired not using a Fully-Connected Appro
 A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but fewer parameters to optimize, allowed the network to efficiently learn complex structures in the dataset.\
 In the image below is shown the discussed wiring between CfC layers
 
-<img src="images/NCP.JPG" width=1000 height=500>
+<img src="images/NCP.JPG" width=1000 height=300>
 
-To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
-Even if simple this structure significantly improved the accuracy of the network. In the image below is shown its structure
+<img src="images/MHAttn.JPG" width=400 height=200> To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
+Even if simple this structure significantly improved the accuracy of the network.
 
-<img src="images/MHAttn.JPG" width=1000 height=500>
+
 
 
 ![Decoder](images/Decoder.JPG)
