@@ -395,9 +395,11 @@ Even if simple this structure significantly improved the accuracy of the network
 
 
 
-![Decoder](images/Decoder.JPG)
+Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output **Mean** and **Variance** of the Prediction.\
 
-![Network](images/Full.JPG)
+A complete image of the Network is showed below
+
+<img src="images/Full.JPG" width=1000 height=3000>
 
 
 ## Contributing
