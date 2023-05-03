@@ -380,12 +380,19 @@ The CfCs used in this work are a particular approximation of the Liquid Time Con
 Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
 This isn't a problem in most datasets, because entries are equally spaced between each other, but in case of some unevennes in the data, the accuracy of the predictions quickly deteriorates. \
 Some attemps have been made using a [RNN with a time depending decay](https://www.nature.com/articles/s41598-018-24271-9), but generally the issue wasn't solved.\
-A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states.\
-However the price to pay in this kind of networks is the increased complexity and a generally longer runtime and this significantly reduced their applications.\
+A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states. The price to pay in this was the increased complexity and a generally longer runtime and this significantly reduced their applications.\
 CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are generally capable of a better overall convergence and accuracy even in an equally spaced scenario when compared with LSTM and GRU.
 
-![NCP](images/NCP.JPG)
-![Attn](images/MHAttn.JPG)
+The CfC Networks in this study have been wired not using a Fully-Connected Approach, but using the [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy to ensure sparsness and faster computation.\
+A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but fewer parameters to optimize, allowed the network to efficiently learn complex structures in the dataset.\
+In the image below is shown the discussed wiring between CfC layers
+
+<img src="images/NCP.JPG" width=1000 height=500>
+
+To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
+Even if simple this structure significantly improved the accuracy of the network. In the image below is shown its structure
+
+<img src="images/MHAttn.JPG" width=1000 height=500>
 
 
 ![Decoder](images/Decoder.JPG)
