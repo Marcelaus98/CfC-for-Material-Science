@@ -348,6 +348,9 @@ I will find my results inside **results/aisi/var/2023_05_02_15_30/**
 
 ## Graphical Representation of the Network
 
+The Main Structure of the Network is shown below.
+
+Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach and Variational Auto-Encoder approach respectively
 <img src="images/AE.JPG" width=500 height=300> <img src="images/VAE.JPG" width=500 height=300>
 
 ![Encoder](images/Encoder_text.JPG)
