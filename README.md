@@ -355,11 +355,23 @@ Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach an
 <img src="images/AE.JPG" width=500 height=350> <img src="images/VAE.JPG" width=500 height=350>
 
 Focusing the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
-Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.
+Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.\
+In this study each block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
 
 <img src="images/Encoder_text.JPG" width=1000 height=500>
 
-![LSTM](images/LSTM.JPG)
+As for the Encoder section, the first structure the data encounters is a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a more complex version of a standard [Recurrent Neural Network](https://www.simplilearn.com/tutorials/deep-learning-tutorial/rnn)\
+This type of RNN has two different internal states:
+
++ **Hidden** (h)
++ **Memory** (c)
+
+Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input data. \
+This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present./
+A downside of this architecture is that having more variables is harder to train, for this some times is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed.
+
+<img src="images/LSTM.JPG" width=1000 height=500>
+
 ![CfC](images/CfC.JPG)
 ![NCP](images/NCP.JPG)
 ![Attn](images/MHAttn.JPG)
