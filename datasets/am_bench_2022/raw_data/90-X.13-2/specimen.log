@@ -1,0 +1,12 @@
+(11/02/2021 12:10:34) Information [Stmgr] "Manual command enabled: Axial Displacement"
+(11/02/2021 12:12:20) Information [Stmgr] "Manual command disabled: Axial Displacement"
+(11/02/2021 12:12:25) Information [MPT Runtime] "Procedure Beginning: MiniTensile Hrabe.000"
+(11/02/2021 12:12:25) Information [MPT Runtime] "Running"
+(11/02/2021 12:30:24) Warning [Stmgr] "Axial Force -- Lower Limit Tripped."
+(11/02/2021 12:30:24) Information [MPT/Failure Detector] "'Break Detect': Failure Event Detected"
+(11/02/2021 12:30:24) Information [MPT Runtime] "Entering Stopped"
+(11/02/2021 12:30:24) Information [MPT Runtime] "Procedure Done"
+(11/02/2021 12:30:24) Information [MPT Runtime] "Stopped
+ Running Time:  00:17:58 
+ Channel Counters:
+    Axial -          0  Cycles"

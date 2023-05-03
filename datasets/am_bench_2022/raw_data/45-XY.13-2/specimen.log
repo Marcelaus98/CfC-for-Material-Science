@@ -1,0 +1,14 @@
+(10/19/2021 15:18:57) Information [Stmgr] "Manual command enabled: Axial Displacement"
+(10/19/2021 15:21:55) Information [Stmgr] "Manual command disabled: Axial Displacement"
+(10/19/2021 15:22:03) Information [MPT Runtime] "Procedure Beginning: MiniTensile Hrabe.000"
+(10/19/2021 15:22:03) Information [MPT Runtime] "Running"
+(10/19/2021 15:41:09) Warning [Stmgr] "Axial Force -- Lower Limit Tripped."
+(10/19/2021 15:41:09) Warning [Stmgr] "Interlock 1 -- Software Interlock."
+(10/19/2021 15:41:09) Information [Stmgr] "HPS 1 -- No Pressure."
+(10/19/2021 15:41:09) Information [Stmgr] "HSM 1 -- No Pressure."
+(10/19/2021 15:41:09) Information [MPT/Failure Detector] "'Break Detect': Failure Event Detected"
+(10/19/2021 15:41:09) Information [MPT Runtime] "Procedure Done"
+(10/19/2021 15:41:09) Information [MPT Runtime] "Stopped
+ Running Time:  00:19:05 
+ Channel Counters:
+    Axial -          0  Cycles"

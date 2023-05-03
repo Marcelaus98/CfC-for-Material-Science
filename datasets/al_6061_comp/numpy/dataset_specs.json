@@ -1,0 +1,21 @@
+{
+    "train_curves": 36,
+    "test_curves": 4,
+    "input_names": [
+        "Strain (%)",
+        "Temp (\u00b0C)",
+        "LogSR (s-1)",
+        "Si (%)",
+        "Fe (%)",
+        "Cu (%)",
+        "Mn (%)",
+        "Mg (%)",
+        "Cr (%)",
+        "Zn (%)",
+        "Ti (%)"
+    ],
+    "output_names": [
+        "Stress (MPa)"
+    ],
+    "title": "Al 6061 Comp"
+}

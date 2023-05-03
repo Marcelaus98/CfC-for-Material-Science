@@ -1,0 +1,13 @@
+{
+    "train_curves": 16,
+    "test_curves": 4,
+    "input_names": [
+        "Strain (%)",
+        "Temp (\u00b0C)",
+        "logSR (s-1)"
+    ],
+    "output_names": [
+        "Stress (MPa)"
+    ],
+    "title": "Steel Spring"
+}

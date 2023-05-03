@@ -1,0 +1,13 @@
+{
+    "train_curves": 52,
+    "test_curves": 5,
+    "valid_curves": 7,
+    "input_names": [
+        "Strain (%)",
+        "Angle (deg)"
+    ],
+    "output_names": [
+        "Stress (MPa)"
+    ],
+    "title": "Inconel"
+}

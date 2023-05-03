@@ -1,0 +1,13 @@
+{
+    "train_curves": 30,
+    "test_curves": 5,
+    "input_names": [
+        "Strain (%)",
+        "Temp (\u00b0C)",
+        "Ang (deg)"
+    ],
+    "output_names": [
+        "Stress (MPa)"
+    ],
+    "title": "Al 6061 Aged"
+}

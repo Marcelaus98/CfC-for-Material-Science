@@ -1,0 +1,14 @@
+{
+    "train_curves": 100,
+    "test_curves": 4,
+    "valid_curves": 33,
+    "input_names": [
+        "Strain (%)",
+        "Temp (\u00b0C)",
+        "LogSR (s-1)"
+    ],
+    "output_names": [
+        "Stress (MPa)"
+    ],
+    "title": "AISI 316L"
+}

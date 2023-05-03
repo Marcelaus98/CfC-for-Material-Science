@@ -1,0 +1,9 @@
+(10/18/2021 10:32:11) Information [Stmgr] "Manual command disabled: Axial Displacement"
+(10/18/2021 10:32:15) Information [MPT Runtime] "Procedure Beginning: MiniTensile Hrabe.000"
+(10/18/2021 10:32:15) Information [MPT Runtime] "Running"
+(10/18/2021 10:53:27) Information [MPT/Failure Detector] "'Break Detect': Failure Event Detected"
+(10/18/2021 10:53:27) Information [MPT Runtime] "Procedure Done"
+(10/18/2021 10:53:27) Information [MPT Runtime] "Stopped
+ Running Time:  00:21:12 
+ Channel Counters:
+    Axial -          0  Cycles"
