@@ -352,12 +352,12 @@ The Main Structure of the Network is shown below.
 
 Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach and Variational Auto-Encoder approach respectively
 
-<img src="images/AE.JPG" width=550 height=350> <img src="images/VAE.JPG" width=550 height=350>
+<img src="images/AE.JPG" width=500 height=350> <img src="images/VAE.JPG" width=500 height=350>
 
 Focusing the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
 Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.
 
-<img src="images/Encoder_txt.JPG" width=1100 height=500>
+<img src="images/Encoder_text.JPG" width=1000 height=500>
 
 ![LSTM](images/LSTM.JPG)
 ![CfC](images/CfC.JPG)
