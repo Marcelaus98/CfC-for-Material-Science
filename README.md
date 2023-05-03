@@ -28,7 +28,7 @@ with the same structure that output simultaniously **Mean** and **Variance**.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the required packages
+Once downloaded, use the package manager [pip](https://pip.pypa.io/en/stable/) to install the required packages
 
 ```bash
 $ pip install -r requirements.txt
@@ -347,6 +347,8 @@ $ python run.py --cuda --var -dataset AISI
 I will find my results inside **results/aisi/var/2023_05_02_15_30/**
 
 ## Graphical Representation of the Network
+
+![AE](images/AE.JPG)
 
 
 ## Contributing
