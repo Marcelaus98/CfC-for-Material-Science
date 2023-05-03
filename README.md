@@ -350,6 +350,20 @@ I will find my results inside **results/aisi/var/2023_05_02_15_30/**
 
 ![AE](images/AE.JPG)
 
+![VAE](images/VAE.JPG)
+
+![Encoder](images/Encoder_text.JPG)
+
+![LSTM](images/LSTM.JPG)
+![CfC](images/CfC.JPG)
+![NCP](images/NCP.JPG)
+![Attn](images/MHAttn.JPG)
+
+
+![Decoder](images/Decoder.JPG)
+
+![Network](images/Full.JPG)
+
 
 ## Contributing
 
