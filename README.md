@@ -389,11 +389,9 @@ In the image below is shown the discussed wiring between CfC layers
 
 <img src="images/NCP.JPG" width=1000 height=300>
 
-<img align="left" src="images/MHAttn.JPG" width=250 height=200> To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
+<img align="left" src="images/MHAttn.JPG" width=250 height=200> 
+To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
 Even if simple this structure significantly improved the accuracy of the network.
-
-
-
 
 Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output **Mean** and **Variance** of the Prediction.\
 
