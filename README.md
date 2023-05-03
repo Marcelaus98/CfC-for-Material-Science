@@ -348,7 +348,7 @@ I will find my results inside **results/aisi/var/2023_05_02_15_30/**
 
 ## Graphical Representation of the Network
 
-<img src="images/AE.JPG" width=50% height=50%>
+<img src="images/AE.JPG" width=400 height=200>
 
 ![VAE](images/VAE.JPG)
 
