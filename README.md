@@ -75,7 +75,7 @@ To complete the Encoder Layer, after a CfC block it is present a Self Attention 
 Even if it is simple, this structure significantly improved the accuracy of the network.
 
 
-<img src="images/MAttn_L.jpg" width=1000 height=500> 
+<img src="images/MAttn.jpg" width=1000 height=500> 
 
 
 
