@@ -1,13 +1,13 @@
 # CfC for Material Science
 
-In this repository there is the research I've done at [MIT](https://www.mit.edu/) in collaboration with [Università la Sapienza di Roma](https://www.uniroma1.it/en/pagina-strutturale/home) and [ENI S.p.a](https://www.eni.com/en-IT/home.html).
+In this repository it's presented the research I've done at [MIT](https://www.mit.edu/) in collaboration with [Università la Sapienza di Roma](https://www.uniroma1.it/en/pagina-strutturale/home) and [ENI S.p.a](https://www.eni.com/en-IT/home.html).
 
-In this work is explored the possibility to use a [black box](https://towardsdatascience.com/why-we-will-never-open-deep-learnings-black-box-4c27cd335118) approach to make previsions on material properties. 
+In this work is explored the possibility to use a [black box](https://towardsdatascience.com/why-we-will-never-open-deep-learnings-black-box-4c27cd335118) approach to make accurate previsions on material properties, after having trained the models on some materials datasets. 
 In this current scenario the coding is entirely done in [Python](https://www.python.org/), using the [Pytorch](https://pytorch.org/) library. 
 
-The approach used to obtain those results is based on the architecture [AutoEncoder](https://www.jeremyjordan.me/autoencoders/), where a first block, called **Encoder** process the input datas and project them in a **Rn** *latent sub-space* and the **Decoder** process the latent information to output predictions. 
+The approach used to obtain those results is based on the architecture [AutoEncoder](https://www.jeremyjordan.me/autoencoders/), where a first block, called **Encoder** processes the input datas and project them in a **Rn** *latent sub-space* and the **Decoder** processes the latent information to output predictions. 
 
-In my work the **Encoder** is composed by a series of layer of [LSTM](https://www.bioinf.jku.at/publications/older/2604.pdf)+[CfC](https://www.nature.com/articles/s42256-022-00556-7)+[Multi Head Attention](https://arxiv.org/abs/1706.03762), the **Decoder** is a [Fully Connected Network](https://deeplearningmath.org/general-fully-connected-neural-networks.html).
+In my work the **Encoder** is composed by a series of layer of [LSTM](https://www.bioinf.jku.at/publications/older/2604.pdf)+[CfC](https://www.nature.com/articles/s42256-022-00556-7)+[Multi Head Attention](https://arxiv.org/abs/1706.03762); the **Decoder** is a [Fully Connected Network](https://deeplearningmath.org/general-fully-connected-neural-networks.html).
 
 To provide an **Uncertainty** handling in case of noisy or multiple entries for the same inputs, the model can also use a [Variational
 Approach](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73) to calcolate the **Mean** and the **Variance** of the Output.\
@@ -30,26 +30,26 @@ with the same structure that output simultaniously **Mean** and **Variance**.
 
 The Main Structure of the Network is shown below.
 
-Those Two are the Simplified Diagrams of the Network in Auto-Encoder approach and Variational Auto-Encoder approach respectively
+Those Two are the Simplified Diagrams of the Network in [Auto-Encoder](https://www.jeremyjordan.me/autoencoders/) approach and [Variational Auto-Encoder](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73) approach respectively
 
 <img src="images/AE_VAE.jpg" width=1000 height=350>
 
 
-Focusing the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
-Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer, each sub-block is connected in series with the previous one.\
-In this study each block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
+Focusing on the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
+Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer. Each sub-block is connected in series with the previous one.\
+In this study each CfC block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
 
 <img src="images/Encoder_text.JPG" width=1000 height=500>
 
 As for the Encoder section, the first structure the data encounters is a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a more complex version of a standard [Recurrent Neural Network](https://www.simplilearn.com/tutorials/deep-learning-tutorial/rnn)\
 This type of RNN has two different internal states:
 
-+ **Hidden** (h)
-+ **Memory** (c)
++ **Hidden** (*h*)
++ **Memory** (*c*)
 
-Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input data. \
-This gives to this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
-A downside of this architecture is that having more variables is harder to train, for this some times is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed.
+Those states can change value using a gating mechanism shown in the image below. The simultaneus presence of both *hidden* and *cell* state allows both long term and short term memory regarding the input datas. \
+This gives this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
+A downside of this architecture is that, having more variables, is harder to train, for this sometimes is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed nor explored.
 
 <img src="images/LSTM.JPG" width=1000 height=500>
 
@@ -61,18 +61,18 @@ The CfCs used in this work are a particular approximation of the Liquid Time Con
 Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
 This isn't a problem in most datasets, because entries are equally spaced between each other, but in case of some unevennes in the data, the accuracy of the predictions quickly deteriorates. \
 Some attemps have been made using a [RNN with a time depending decay](https://www.nature.com/articles/s41598-018-24271-9), but generally the issue wasn't solved.\
-A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states. The price to pay in this was the increased complexity and a generally longer runtime and this significantly reduced their applications.\
-CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are generally capable of a better overall convergence and accuracy even in an equally spaced scenario when compared with LSTM and GRU.
+A more complete answer to the problem was given using a [Neural ODE Network](https://arxiv.org/abs/1806.07366). This kind of network could better model the changing between hidden states. The price to pay in this architecture was the increased complexity and a generally longer runtime and this significantly reduced its applications.\
+CfC networks on the other hand, are lightweight computational-wise and are more robust to great unevennes in data and are, generally, capable of a better overall convergence and accuracy even in an equally spaced scenario when compared to LSTM and GRU.
 
 The CfC Networks in this study have been wired not using a Fully-Connected Approach, but using the [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy to ensure sparsness and faster computation.\
-A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but fewer parameters to optimize, allowed the network to efficiently learn complex structures in the dataset.\
+A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but with fewer parameters to optimize, allows the network to efficiently learn complex structures in the dataset.\
 In the image below is shown the discussed wiring between CfC layers
 
 <img src="images/NCP.JPG" width=1000 height=300>
 
 <img align="left" src="images/MHAttn.JPG" width=250 height=200> 
-To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weight them to extract the most important feature from the sequence.\
-Even if simple this structure significantly improved the accuracy of the network.
+To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weights them to extract the most important features from the sequence.\
+Even if it is simple, this structure significantly improved the accuracy of the network.
 
 
 
@@ -80,32 +80,33 @@ Even if simple this structure significantly improved the accuracy of the network
 
 
 
-Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output **Mean** and **Variance** of the Prediction.
+Lastly after the Encoder Layers, the *compressed information* is decoded using a Fully Connected Network. In case of noisy input data or some kind of redundace or variance in the data entries, a Variational Approach it has been developed using *Two Parallel* Fully Connected Network to output both **Mean** and **Variance** of the Prediction.
 
 
-A complete image of the Network is showed below
+A complete image of the Network is shown below
 
-<img src="images/Full.JPG">
+<img src="images/Full.JPG" width=1000>
 
 
 ## Installation
 
-Once downloaded, use the package manager [pip](https://pip.pypa.io/en/stable/) to install the required packages
+Once downloaded, extract the folder on your local machine and use the package manager [pip](https://pip.pypa.io/en/stable/) to install the required packages
 
 ```bash
 $ pip install -r requirements.txt
 
 ```
+In this current version the model libraries are portable, so no further actions are necessary.
 
 ## Usage
-This is a **quick guide** to use the script I created, further details are in the sections below this one.
+This is a **quick guide** to run the script, further details are in the sections below this one.
 
 To **run** the program as it is, use:
 
 ```bash
 $ python run.py
 ```
-In this case it will run for 500 epochs on *CPU* using as dataset **AISI 316L**.
+In this case it will run for *500 epochs* on *CPU* using as dataset **AISI 316L**.
 
 To **run** it for a user **specified number of epochs**, use:
 
@@ -138,13 +139,20 @@ The **Datasets** cleaned and ready to use are:
 
 5. [STEEL](https://www.mdpi.com/2075-4701/9/3/290) A Dataset composed by several **Steel-Spring grade Strain-Stress curves**, taken under different *Temperatures* and *Strain Rates*. This particular dataset has few entry and the *inputs* are **very noisy**. Convergence is not great, but *--var* helps to have better results.
 
+
+To **see** all the parameters accepted, use:
+```bash
+$ python run.py --help
+```
+
+
 ## Implementation of a Custom Dataset
 
 In the case you want to use the provided script to train the model on your personal dataset here it is a detailed guide on how to do it:
 1. Locate the custom folder present in dataset  **dataset/custom**
 2. In this folder create 2 folders named **numpy** and **scaler**
 3. In the **scaler** folder there should be 2 files named **in_scaler.gz** and **out_scaler.gz**. This 2 files contains the scaling informations of the inputs and outputs. 
-I suggest you to use my *custom library*. A quick python implementation could be:
+I suggest you to use my *custom library* to realize this quickly. A easy python implementation could be:
 
    ```python
    from core.utils import CustomScale 
@@ -155,9 +163,9 @@ I suggest you to use my *custom library*. A quick python implementation could be
    joblib.dump(in_scaler, scaler_folder_path + "in_scaler.gz")
 
    ```
-   Be aware that the *fit_transform* method takes a numpy array with NxM shape. The array should be arranged to have the various input entry on the rows. Same thing can be done for the out scaler
+   Be aware that the *fit_transform* method takes a numpy array with NxM shape. The array should be arranged to have the various input entries on the rows. Same thing can be done for the **out scaler**.
 
-4. In the numpy folder there should be **test_dt.npy**, **test_y.npy**, **test_x.npy**, **train_dt.npy**, **train_y.npy**, **train_x.npy**, **dataset_specs.json**. To create the npy array you can use my *custom library*. A quick python implementation could be:
+4. In the numpy folder there should be **test_dt.npy**, **test_y.npy**, **test_x.npy**, **train_dt.npy**, **train_y.npy**, **train_x.npy**, **dataset_specs.json**. To create the npy array you can use my *custom library*. A easy python implementation could be:
 
     ```python
     from core.utils import SlidingWindowLoader
@@ -168,9 +176,9 @@ I suggest you to use my *custom library*. A quick python implementation could be
     X_sequence = sliding_x_container.out_numpy()
     np.save(X_sequence, path_numpy_folder+ "train_x.npy")
 
-    # X -> NxM numpy array containing for example my train input datas. 
+    # X -> NxM numpy array containing for example your train input datas. 
     #
-    # window -> lenght of the window i want to use in the model (CfC is 
+    # window -> lenght of the window you want to use in the model (CfC is 
     # based on RNN, 
     # so a moving window approach is REQUIRED)
     #
@@ -187,8 +195,8 @@ I suggest you to use my *custom library*. A quick python implementation could be
 
 
     Mind that CfC models uses also time in the form of timespans (*Ti - Ti-1*),
-so to generate the sequence in case of zero padding you have to be cautious. 
-In my research I used this method and it gave good results:
+so to generate the sequence in case of *zero padding* you have to be cautious. 
+In the research it was used this method and it gave good results:
 
     ```python
     from core.utils import adjust_time
@@ -200,19 +208,19 @@ In my research I used this method and it gave good results:
     dT_sequence = sliding_dT_container.out_numpy()
     np.save(dT_sequence, path_numpy_folder + "train_dt.npy")
 
-    # T -> my train time vector Nx1 (T1,T2,T3,...,Tn)
+    # T -> your train time vector Nx1 (T1,T2,T3,...,Tn)
 
     ```
 
-   So essentially I expanded the Time vector inserting a sequence of T entries spaced by one, moving every other entry by a *window* value.
+   So essentially the Time vector was expanded inserting a sequence of T entries spaced by one, moving every other entry by a *window* value.
 
    *adjust_time* is just a function that performs Ti - Ti-1 on every couple of elements in the array to generate a dT tensor. 
 
-   Essentially with this *trick* for the *zero-padded* part of the inputs the dT tensor it will be a sequence of 1, after the zero padding the dT and inputs will be untouched. \
+   With this *trick* for the *zero-padded* part of the inputs the dT tensor it will be a sequence of 1, after the zero padding the dT and inputs will be untouched. \
  This *trick* allows you to use the first T sequence of input data that would be, otherwise, lost.\
 If padding is False in the input sequence generation, the time trick doesn't need to be performed.
 
-   In the case of **multiple curves** (like in the datasets I've used). Assuming you have N curves containing the train data in some .cvs files
+   In the case of **multiple curves** (like in every datasets used in this research). Assuming you have N curves containing the train data in some .cvs files.
 
     ```python
     import os
@@ -295,20 +303,21 @@ Let's dive in in every **key-value** pair:
 
 To manually change the hyperparameters you need to modify the *config_model.json* located in the main folder. \
 Essentially the config file has 3 sections: *Encoder*, *Decoder*, *Training*. \
- Here it is a guide that explain what each entry does in detail:
+ Here it is a guide that explain what each entry does:
 
 1. **Encoder**
 
    + *total_neurons*: Number of **Total Neurons** on the [**CfC**](https://www.nature.com/articles/s42256-022-00556-7) and [**LSTM**](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) layers, it can be virtually any number. \
-Do not set a too large value, because the memory needed will increase rapidly and it will slow down the training process and it will make it harder. \
-[CfC](https://www.nature.com/articles/s42256-022-00556-7) are **very efficient** so it is really not needed a very wide network, so **25**,**30**,**35** are good values and it can give a very good performance on a lot of scenarios.
+Do not set a too large value, because the memory needed will increase rapidly and it will slow down the training process making the convergence harder. \
+[CfC](https://www.nature.com/articles/s42256-022-00556-7) are **very efficient** so it is really not needed a very wide network. \
+So **25**,**30**,**35** are good values and it can give a very good performance on a lot of scenarios.
 
     + *motor_neurons*: Number of **Final Neurons** of the [**CfC Layer**](https://www.nature.com/articles/s42256-022-00556-7). \
 Data compression is **good** in the Neural Network applications. A very high number it may capture more features but it can slow down the training, on the other hand a low value it may be not sufficient to capture all the features and the accuracy it will be low. \
-**Compromise** here is the **key**.\
+**Compromise** here is the **key** to obtain good results.\
  Mind also that *motor_neurons* are included in the *total_neurons* value, so a good rule of thumb it should be **motor_neurons < total_neurons/3**
 
-   + *sparsity*: This is the **main feature** of [**CfC**](https://www.nature.com/articles/s42256-022-00556-7) with [**NCP**](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy, I suggest you to read the [original paper](https://publik.tuwien.ac.at/files/publik_292280.pdf) to understand a little more. Allowed value are in the range 0-1, a low value it means the network is pratically fully connected, a highy value it means the network has some not connected neurons(and it is here that the magic happens). \
+   + *sparsity*: This is the **main feature** of [**CfC**](https://www.nature.com/articles/s42256-022-00556-7) with [**NCP**](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy, read the [original paper](https://publik.tuwien.ac.at/files/publik_292280.pdf) to understand a little more about it. Allowed value are in the range **0-1**, a low value it means the network is pratically fully connected, a highy value it means the network has some not connected neurons(and it is here that the magic happens). \
 **A good starting value could be 0.5**.
 
    + *n_layers_cfc*: This is the number of **LSTM-CfC-Multi Head Attention** layers present in the Encoder part. \
@@ -335,10 +344,10 @@ Allowed values starts from 1 (trivial case), but as a rule of thumb a good start
    + *decay_fcn*: This control the change in width of the [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) for every layer.\
 For example having a decay set to **2** and starting with a **64** *width* the progression will be: \
 **64 -> 32 -> 16 -> 8 -> 4** ... \
-It is useful because it **compress** information in the **Decoder** part.\
-Be sure the decay and the number of layers is compatible with the starting width od the [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) network.
+It is useful because it **compresses** information in the **Decoder** part.\
+Be sure the decay and the number of layers are compatible with the starting width of the [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) network.
 
-   + *norm*: It is a flag that control the presence or not of a [**Normalization Layer**](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) in each [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) layer, read the [documentation](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) on Pytorch website for more informations. \
+   + *norm*: It is a *flag* that control the presence or not of a [**Normalization Layer**](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) in each [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) layer, read the [documentation](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) on Pytorch website for more informations about it. \
 Allowed values are **False**, **True**. \
 With *False* is **Disabled** and with *True* is **Enabled**.
 
@@ -405,8 +414,7 @@ For example running at **15:30** on **02/05/23** the script with:
 $ python run.py --cuda --var -dataset AISI
 
 ```
-
-I will find my results inside **results/aisi/var/2023_05_02_15_30/**
+You will find the results inside **results/aisi/var/2023_05_02_15_30/**
 
 ## Contributing
 
