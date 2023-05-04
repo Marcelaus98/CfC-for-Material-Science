@@ -32,7 +32,7 @@ The Main Structure of the Network is shown below.
 
 Those Two are the Simplified Diagrams of the Network in [Auto-Encoder](https://www.jeremyjordan.me/autoencoders/) approach and [Variational Auto-Encoder](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73) approach respectively
 
-<img src="images/AE_VAE.jpg" width=1000 height=350>
+<img src="images/AE_VAE2.jpg" width=1000>
 
 
 Focusing on the Encoder part, it can be seen clearly as composed by **N repetitive blocks** connected in series.\
