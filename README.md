@@ -171,8 +171,7 @@ I suggest you to use my *custom library* to realize this quickly. A easy python 
     from core.utils import SlidingWindowLoader
     import numpy as np
 
-    sliding_x_container = SlidingWindowLoader(X,window = window,padding = 
-    padding,cpu = True)
+    sliding_x_container = SlidingWindowLoader(X,window = window,padding = padding,cpu = True)
     X_sequence = sliding_x_container.out_numpy()
     np.save(X_sequence, path_numpy_folder+ "train_x.npy")
 
