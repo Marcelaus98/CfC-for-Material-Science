@@ -70,7 +70,7 @@ In the image below is shown the discussed wiring between CfC layers
 
 <img src="images/NCP_policy.jpg" width=1000 height=500>
 
-<img src="images/MAttn_L.hpg" width=1000 height=500> 
+<img src="images/MAttn_L.jpg" width=1000 height=500> 
 
 To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weights them to extract the most important features from the sequence.\
 Even if it is simple, this structure significantly improved the accuracy of the network.
