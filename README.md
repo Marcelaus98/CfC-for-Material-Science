@@ -99,7 +99,7 @@ More details can be found here:
 + [Laser Printed Inconel](https://data.nist.gov/od/id/mds2-2588)
 + [Steel Spring Grade](https://www.mdpi.com/2075-4701/9/3/290)
 
-The results obtained were encouraging, the images shown below are obtained on the test dataset, so the behaviour of the model it is as close to the reality as possible.
+The results obtained were encouraging, the images shown below are obtained on unseen data, so the behaviour of the model it is as close to the reality as possible.
 
 1. **AISI**
 
