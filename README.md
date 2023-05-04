@@ -17,6 +17,7 @@ with the same structure that output simultaniously **Mean** and **Variance**.
 ## Index
 
 + [Graphical Representation of the Network](#Graphical-Representation-of-the-Network)
++ [Research Results](#Reserch-Results)
 + [Installation](#Installation)
 + [Usage](#Usage)
 + [Implementation of a Custom Dataset](#Implementation-of-a-Custom-Dataset)
@@ -85,6 +86,42 @@ Lastly after the Encoder Layers, the *compressed information* is decoded using a
 A complete image of the Network is shown below
 
 <img src="images/Full.JPG" width=1000>
+
+## Research Results
+
+Here, in this section, are presented the model results and performance obtained with the architecture described above.\
+The Dataset used in the work have data entries representing the Strain Stress behaviour of different metals. The curves were obtained under different conditions, each peculiar of its own dataset.
+More details can be found here:
+
++ [AISI](https://www.sciencedirect.com/science/article/abs/pii/S0890695506001507?via%3Dihub)
++ [Al-6061 Aged](https://materialsdata.nist.gov/handle/11256/774)
++ [Al-6061 with composition data](https://www.sciencedirect.com/science/article/pii/S2352340919304391?via%3Dihub)
++ [Laser Printed Inconel](https://data.nist.gov/od/id/mds2-2588)
++ [Steel Spring Grade](https://www.mdpi.com/2075-4701/9/3/290)
+
+The results obtained were encouraging, the images shown below are obtained on the test dataset, so the behaviour of the model it is as close to the reality as possible.
+
+1. **AISI**
+
+<img src="research_results/AISI/Test.jpg" width=1000 height=500>
+
+2. **Al-6061 Aged**
+
+<img src="research_results/Al_6061_Aged/Test.jpg" width=1000 height=500>
+
+3. **Al-6061 with composition data**
+
+<img src="research_results/Al_6061_Comp/Test.jpg" width=1000 height=500>
+
+4. **Laser Printed Inconel**
+
+<img src="research_results/Inconel/Test.jpg" width=1000 height=500>
+
+5. **Steel Spring Grade**
+
+<img src="research_results/Steel/Test.jpg" width=1000 height=500>
+
+
 
 
 ## Installation
