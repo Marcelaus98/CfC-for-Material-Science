@@ -199,11 +199,9 @@ In the research it was used this method and it gave good results:
 
     ```python
     from core.utils import adjust_time
-    T = np.vstack((np.arange(0,window)[:,np.newaxis],T- 
-    T.min()+window))
+    T = np.vstack((np.arange(0,window)[:,np.newaxis],T- T.min()+window))
     dT = adjust_time(T)
-    sliding_dT_container = SlidingWindowLoader(dT,window = 
-    window,padding = False,cpu = True)
+    sliding_dT_container = SlidingWindowLoader(dT,window = window,padding = False,cpu = True)
     dT_sequence = sliding_dT_container.out_numpy()
     np.save(dT_sequence, path_numpy_folder + "train_dt.npy")
 
