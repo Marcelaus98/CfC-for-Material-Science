@@ -228,8 +228,7 @@ If padding is False in the input sequence generation, the time trick doesn't nee
     raw_in_list_train = []
     raw_out_list_train = []
     dt_list_train = []
-    curves_files = [f for f in listdir(path_train_curves) if 
-    isfile(join(path_train_curves, f))]
+    curves_files = [f for f in listdir(path_train_curves) if isfile(join(path_train_curves, f))]
     for curve in curves_files:
         raw = pd.read_csv(path_train_curves + curve)
 
