@@ -1,0 +1,23 @@
+{
+    "config_wiring": {
+        "motor_neurons": 8,
+        "total_neurons": 40,
+        "sparsity": 0.6880002691709021,
+        "n_layers_cfc": 2
+    },
+    "config_attn": {
+        "key_size": 8,
+        "query_size": 8,
+        "value_size": 8,
+        "heads": 2,
+        "dropout": 0.0968856835275632,
+        "symmetric": true
+    },
+    "layers_fcn": 2,
+    "width_fcn": 8,
+    "decay_fcn": 1,
+    "norm": false,
+    "activation": "sigmoid",
+    "lr": 0.0049973854136603,
+    "gamma": 0.9962375051489676
+}
