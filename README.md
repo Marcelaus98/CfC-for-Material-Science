@@ -107,11 +107,11 @@ The results obtained were encouraging, the images shown below are obtained on un
 
 2. **Al-6061 Aged**
 
-<img src="research_results/Al_6061_Aged/Test.jpg" width=1000 height=500>
+<img src="research_results/Al-6061_Aged/Test.jpg" width=1000 height=500>
 
 3. **Al-6061 with composition data**
 
-<img src="research_results/Al_6061_Comp/Test.jpg" width=1000 height=500>
+<img src="research_results/Al-6061_Comp/Test.jpg" width=1000 height=500>
 
 4. **Laser Printed Inconel**
 
