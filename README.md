@@ -103,8 +103,8 @@ The results obtained were encouraging, the images shown below are obtained on un
 
 1. **AISI**
 
-<img src="research_results/AISI/valid.gif" width=1000>
-<img src="research_results/AISI/dataset_grid.jpg" width=1000>
+<img src="research_results/AISI/valid.gif" width=450>
+<img src="research_results/AISI/dataset_grid.jpg" width=450>
 
 
 2. **Al-6061 Aged**
