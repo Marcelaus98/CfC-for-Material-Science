@@ -103,7 +103,7 @@ The results obtained were encouraging, the images shown below are obtained on un
 
 1. **AISI**
 
-<img src="research_results/AISI/valid.gif" width=450 height=300><img src="research_results/AISI/dataset_grid.jpg" width=450 height=300>
+<img src="research_results/AISI/valid.gif" width=425 height=300><img src="research_results/AISI/dataset_grid.jpg" width=425 height=300>
 
 
 
