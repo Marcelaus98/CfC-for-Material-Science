@@ -56,7 +56,7 @@ A downside of this architecture is that, having more variables, is harder to tra
 
 After the [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer is present a [CfC](https://www.nature.com/articles/s42256-022-00556-7) block. This particular structure is shown below, but it can be imagined as a RNN with time handling. 
 
-<img src="images/CfC_Cell.jpg" width=1000 height=300>
+<img src="images/CfC_Cell2.jpg" width=1000 height=300>
 
 The CfCs used in this work are a particular approximation of the Liquid Time Constant ([LTC](https://arxiv.org/abs/2006.04439)), essentially they allow a better continuous transition between hidden states using time data.\
 Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
