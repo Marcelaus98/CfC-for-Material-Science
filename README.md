@@ -40,7 +40,7 @@ Focusing on the Encoder part, it can be seen clearly as composed by **N repetiti
 Each block is composed by a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a [CfC](https://www.nature.com/articles/s42256-022-00556-7) Layer wired with [NCP](https://publik.tuwien.ac.at/files/publik_292280.pdf) policy and a Self-Attention mechanism realised using a [Multi-Head Attention](https://arxiv.org/abs/1706.03762v5) Layer. Each sub-block is connected in series with the previous one.\
 In this study each CfC block is wired using the same NCP configuration, but it could be reached further data compression reducing the **Total Number of Neurons** or increasing the **Connection Sparsity** at each sub-block subsequential connection.
 
-<img src="images/Encoder_text.JPG" width=1000 height=500>
+<img src="images/Encoder_text.JPG" width=1000>
 
 As for the Encoder section, the first structure the data encounters is a [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer, a more complex version of a standard [Recurrent Neural Network](https://www.simplilearn.com/tutorials/deep-learning-tutorial/rnn)\
 This type of RNN has two different internal states:
@@ -52,11 +52,11 @@ Those states can change value using a gating mechanism shown in the image below.
 This gives this particular architecture, the ability to better *mine* the structure of the data, working particularly well when a perioicity of some kind is present.\
 A downside of this architecture is that, having more variables, is harder to train, for this sometimes is preferred the [GRU](https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be) structure. In this work LSTM convergence was not a problem, so a GRU implementation wasn't needed nor explored.
 
-<img src="images/LSTM_Cell.jpg" width=1000 height=500>
+<img src="images/LSTM_Cell.jpg" width=1000>
 
 After the [LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) Layer is present a [CfC](https://www.nature.com/articles/s42256-022-00556-7) block. This particular structure is shown below, but it can be imagined as a RNN with time handling. 
 
-<img src="images/CfC_Cell2.jpg" width=1000 height=300>
+<img src="images/CfC_Cell2.jpg" width=1000>
 
 The CfCs used in this work are a particular approximation of the Liquid Time Constant ([LTC](https://arxiv.org/abs/2006.04439)), essentially they allow a better continuous transition between hidden states using time data.\
 Normally in a standard RNN such as GRU or LSTM the hidden states are passed from the state *i* to the *i+1* without considering the effective **distance** between the entry points.\
@@ -69,14 +69,14 @@ The CfC Networks in this study have been wired not using a Fully-Connected Appro
 A great advantage of this kind of connection is the possibility to cut the synapses between neurons without weighting on the Optimizer. Having a wider structure but with fewer parameters to optimize, allows the network to efficiently learn complex structures in the dataset.\
 In the image below is shown the discussed wiring between CfC layers
 
-<img src="images/NCP_policy.jpg" width=1000 height=500>
+<img src="images/NCP_policy.jpg" width=1000>
 
 
 To complete the Encoder Layer, after a CfC block it is present a Self Attention Mechanism. This block receive as inputs all the *hidden states* retrieved during the CfC pass and it weights them to extract the most important features from the sequence.\
 Even if it is simple, this structure significantly improved the accuracy of the network.
 
 
-<img src="images/MAttn.jpg" width=1000 height=500> 
+<img src="images/MAttn.jpg" width=1000> 
 
 
 
