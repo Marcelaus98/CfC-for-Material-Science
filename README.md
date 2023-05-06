@@ -381,7 +381,7 @@ Be sure the decay and the number of layers are compatible with the starting widt
 Allowed values are **false**, **true**. \
 With *False* is **Disabled** and with *True* is **Enabled**.
 
-   + *variational* : Its is a *flag* that enables the [**Variational Approach**](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73).\
+   + *variational* : It is is a *flag* that enables the [**Variational Approach**](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73).\
 Allowed values are **false**, **true**. \
 With *False* is **Disabled** and with *True* is **Enabled**.
    
@@ -429,6 +429,7 @@ Here it follows an example of the *config_model.json* template. The same templat
     "width_fcn": 64,
     "decay_fcn": 2,
     "norm": false,
+    "variational" : false,
     "activation": "sigmoid",
     "lr" : 5e-3,
     "gamma" : 0.998
