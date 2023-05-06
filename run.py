@@ -86,8 +86,6 @@ def main(config_main):
     config_model_json = {
         'config_wiring' : config_wiring,
         'config_attn': config_attn,
-        'n_layers_cfc' : n_layers_cfc,
-        'motor_neurons' :  config_model['motor_neurons'],
         'layers_fcn' : config_model['layers_fcn'],
         'width_fcn' : config_model['width_fcn'],
         'decay_fcn' : config_model['decay_fcn'],
