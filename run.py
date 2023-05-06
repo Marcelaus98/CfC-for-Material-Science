@@ -55,6 +55,9 @@ def main(config_main):
     output_names = config_main['output_names']
     title = config_main['title']
     config_model = config_main['config_model']
+    lr = config_model['lr']
+    gamma = config_model['gamma']
+
 
     config_wiring = config_model['config_wiring']
     n_layers_cfc = config_wiring['n_layers_cfc']
@@ -93,8 +96,8 @@ def main(config_main):
         'variational' : var_flag,
         'input_size' : config_model['input_size'],
         'output_size' : config_model['output_size'],
-        'lr' : config_model['lr'],
-        'gamma' : config_model['gamma']
+        'lr' : lr,
+        'gamma' : gamma
     }
 
     model = CfCNet_VAR(config_model).to(device = device,dtype = dtype) if var_flag else CfCNet(config_model).to(device = device,dtype = dtype)
@@ -103,8 +106,8 @@ def main(config_main):
     epochs_train = 2 if test_flag else epochs
     train_config = {
         'epochs' : epochs_train,
-        'lr' : config_model['lr'],
-        'gamma': config_model['gamma']
+        'lr' : lr,
+        'gamma': gamma,
         'batch_size_train' : batch_size_train,
         'batch_size_test' : batch_size_test,
     }
