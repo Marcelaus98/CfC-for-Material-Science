@@ -94,7 +94,7 @@ def main(config_main):
         'input_size' : config_model['input_size'],
         'output_size' : config_model['output_size'],
         'lr' : config_model['lr'],
-        'gamma' : comfig_model['gamma']
+        'gamma' : config_model['gamma']
     }
 
     model = CfCNet_VAR(config_model).to(device = device,dtype = dtype) if var_flag else CfCNet(config_model).to(device = device,dtype = dtype)
@@ -104,7 +104,7 @@ def main(config_main):
     train_config = {
         'epochs' : epochs_train,
         'lr' : config_model['lr'],
-        'gamma': comfig_model['gamma']
+        'gamma': config_model['gamma']
         'batch_size_train' : batch_size_train,
         'batch_size_test' : batch_size_test,
     }
