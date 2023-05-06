@@ -441,16 +441,19 @@ Here it follows an example of the *config_model.json* template. The same templat
 
 Once you have executed the script the results are stored in the execution folder. \
 You will notice a new folder has just been created named **results**, inside there will be a child folder with a name based on your dataset selection.\
-Inside this folder there will be a folder named **normal** or **var** depending on the triggering of the **--var** option during the execution.\
+Inside this folder there will be a folder named **normal** or **var** depending on the *variational* flag settings in the *config_model.json*.\
 Inside one of those two folder are stored the results in directory having as a name the timestamp of the script execution.
 
 For example running at **15:30** on **02/05/23** the script with:
 
 ```bash
-$ python run.py --cuda --var -dataset AISI
+$ python run.py --cuda -dataset AISI
 
 ```
-You will find the results inside **results/aisi/var/2023_05_02_15_30/**
+You will find the results inside: 
+
++ **results/aisi/var/2023_05_02_15_30/** if *variational* was set **true**
++ **results/aisi/normal/2023_05_02_15_30/** if *variational* was set **false**
 
 ## Contributing
 
