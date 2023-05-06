@@ -92,8 +92,6 @@ def main(config_main):
         'norm' :  config_model['norm'],
         'activation' : config_model['activation'],
         'variational' : var_flag,
-        'input_size' : config_model['input_size'],
-        'output_size' : config_model['output_size'],
         'lr' : lr,
         'gamma' : gamma
     }
