@@ -162,7 +162,6 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--test', dest = 'test_flag', action = 'store_true', default = False, help = 'Set Epochs to 2 for testing before deploying. By Default is disabled')
 parser.add_argument('-epochs', dest = 'epochs', action = 'store', default = 500, help = 'Set Train Epochs. Default is 500')
-parser.add_argument('--var', dest = 'var_flag', action = 'store_true', default = False, help = 'Enable Variational Approach. By Default is disabled')
 parser.add_argument('-dataset', dest = 'dataset', action = 'store', default = 'aisi', help = 'Select the proper dataset, available datasets are: AISI, AL_COMP, AL_AGED, \
     INCONEL, STEEL, CUSTOM. Default is AISI. More information on the README doc')
 parser.add_argument('-batch_train', dest = 'batch_train', action = 'store', default = 1000, help = 'Set Train Batch Size. Default is 1000')
@@ -173,7 +172,6 @@ parser.add_argument('-seed',dest = 'seed',action = 'store', default = 1, help = 
 
 args = parser.parse_args()
 test_flag = args.test_flag
-var_flag = args.var_flag
 cuda_flag = args.cuda_flag
 float16_flag  = args.float16_flag
 epochs = int(args.epochs)
@@ -265,6 +263,19 @@ path_results_general = './results/'
 mkdir(path_results_general)
 path_results_model = path_results_general + args.dataset.lower() + '/'
 mkdir(path_results_model)
+
+
+
+
+with open('./config_model.json', 'r') as openfile:
+ 
+    # Reading from json file
+    config_model = json.load(openfile)
+
+
+var_flag = config_model['variational']
+
+
 if var_flag:
     path_results_model_type = path_results_model + 'var/'
 else:
@@ -276,13 +287,6 @@ now = datetime.datetime.now()
 timestamp = now.strftime("%Y_%m_%d_%H_%M")
 path_save = path_results_model_type + timestamp + '/'
 mkdir(path_save)
-
-
-
-with open('./config_model.json', 'r') as openfile:
- 
-    # Reading from json file
-    config_model = json.load(openfile)
 
 config_main = {
     'train_loader' : train_loader,
