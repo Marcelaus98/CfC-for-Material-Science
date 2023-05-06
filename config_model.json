@@ -17,6 +17,7 @@
     "width_fcn": 64,
     "decay_fcn": 2,
     "norm": false,
+    "variational" : true,
     "activation": "sigmoid",
     "lr" : 5e-3,
     "gamma" : 0.998
