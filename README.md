@@ -156,10 +156,6 @@ To **speed up** the training process using the parallelization offered by **GPU*
 ```bash
 $ python run.py --cuda
 ```
-To apply a **Variational approach**, obtaining as output both **Mean** and **Variance** of the Prediction, use:
-```bash
-$ python run.py --var
-```
 
 To train on **different dataset**, use:
 ```bash
@@ -365,7 +361,7 @@ This number it needs to be a divisor of *motor_neurons* in order to work.
    + *dropout*: It is the dropout probability, read the [documentation](https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html) on Pytorch website for more informations. \
 Allowed values are in **0-1** range, with **lower value** no dropout will happen and little counter-overfitting will happen, with **high value** this fenomenom will increase in frequency, but the training will be harder.
 
-   + *symmetric*: **LEAVE ALWAYS TRUE**
+   + *symmetric*: **LEAVE ALWAYS true**
 
 2. **Decoder**
 
@@ -382,8 +378,13 @@ It is useful because it **compresses** information in the **Decoder** part.\
 Be sure the decay and the number of layers are compatible with the starting width of the [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) network.
 
    + *norm*: It is a *flag* that control the presence or not of a [**Normalization Layer**](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) in each [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) layer, read the [documentation](https://pytorch.org/docs/stable/generated/torch.nn.LayerNorm.html) on Pytorch website for more informations about it. \
-Allowed values are **False**, **True**. \
+Allowed values are **false**, **true**. \
 With *False* is **Disabled** and with *True* is **Enabled**.
+
+   + *variational* : Its is a *flag* that enables the [**Variational Approach**](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73).\
+Allowed values are **false**, **true**. \
+With *False* is **Disabled** and with *True* is **Enabled**.
+   
 
    + *activation*: It specifies the [activation functions](https://pytorch.org/docs/stable/nn.html#non-linear-activations-weighted-sum-nonlinearity) on the [**FCN**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) layers.\
 Allowed values are:
