@@ -104,14 +104,14 @@ The results obtained were encouraging, the images shown below are obtained on un
 
 1. **Al MultiLoad**
 
-
+<img src="research_results/Al_ML/1_data.png" width=1000>
 
 
 2. **AISI**
 
-<img src="research_results/AISI/2_data_p1.png" width=1000><img src="research_results/AISI/dataset_grid.jpg" width=400 height=300>
+<img src="research_results/AISI/2_data_p1.png" width=1000>
 
-<img src="research_results/AISI/2_data_p2.png" width=1000><img src="research_results/AISI/dataset_grid.jpg" width=400 height=300>
+<img src="research_results/AISI/2_data_p2.png" width=1000>
 
 
 
