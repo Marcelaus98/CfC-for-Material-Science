@@ -93,6 +93,7 @@ Here, in this section, are presented the model results and performance obtained 
 The Dataset used in the work have data entries representing the Strain Stress behaviour of different metals. The curves were obtained under different conditions, each peculiar of its own dataset.
 More details can be found here:
 
++ [Al MultiLoad](https://www.sciencedirect.com/science/article/abs/pii/S1359645423002902)
 + [AISI](https://www.sciencedirect.com/science/article/abs/pii/S0890695506001507?via%3Dihub)
 + [Al-6061 Aged](https://materialsdata.nist.gov/handle/11256/774)
 + [Al-6061 with composition data](https://www.sciencedirect.com/science/article/pii/S2352340919304391?via%3Dihub)
@@ -101,27 +102,44 @@ More details can be found here:
 
 The results obtained were encouraging, the images shown below are obtained on unseen data, so the behaviour of the model it is as close to the reality as possible.
 
-1. **AISI**
-
-<img src="research_results/AISI/valid.gif" width=400 height=300><img src="research_results/AISI/dataset_grid.jpg" width=400 height=300>
+1. **Al MultiLoad**
 
 
 
-2. **Al-6061 Aged**
 
-<img src="research_results/Al-6061_Aged/Test.jpg" width=1000 height=500>
+2. **AISI**
 
-3. **Al-6061 with composition data**
+<img src="research_results/AISI/2_data_p1.png" width=1000><img src="research_results/AISI/dataset_grid.jpg" width=400 height=300>
 
-<img src="research_results/Al-6061_Comp/Test.jpg" width=1000 height=500>
+<img src="research_results/AISI/2_data_p2.png" width=1000><img src="research_results/AISI/dataset_grid.jpg" width=400 height=300>
 
-4. **Laser Printed Inconel**
 
-<img src="research_results/Inconel/Test.jpg" width=1000 height=500>
 
-5. **Steel Spring Grade**
+3. **Al-6061 Aged**
 
-<img src="research_results/Steel/Test.jpg" width=1000 height=500>
+<img src="research_results/Al-6061_Aged/3_data_p1.png" width=1000>
+
+<img src="research_results/Al-6061_Aged/3_data_p2.png" width=1000>
+
+4. **Al-6061 with composition data**
+
+<img src="research_results/Al-6061_Comp/4_data_p1.png" width=1000>
+
+<img src="research_results/Al-6061_Comp/4_data_p2.png" width=1000>
+
+<img src="research_results/Al-6061_Comp/4_data_p3.png" width=500>
+
+5. **Laser Printed Inconel**
+
+<img src="research_results/Inconel/5_data_p1.png" width=1000>
+
+<img src="research_results/Inconel/5_data_p2.png" width=1000>
+
+<img src="research_results/Inconel/5_data_p3.png" width=500>
+
+6. **Steel Spring Grade**
+
+<img src="research_results/Steel/6_data.png" width=1000>
 
 
 
